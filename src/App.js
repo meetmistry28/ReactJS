@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Person from "./user/components/person";
+import Man from "./user/components/man";
+import Animal from "./user/components/animal";
+import Cat from "./user/components/maleAnimal";
+import Country from "./user/components/Country";
+import City from "./user/components/City";
+import CountryFun from "./user/components/CountryFun";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React props (home Work done)
-        </a>
-      </header>
-    </div>
+    <>
+      <Person/>
+      <Man/>
+      <Animal/>
+      <Cat/>
+      <Country/>
+      <City/>
+      <CountryFun/>
+    </>
   );
 }
 
