@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Cat = () => {
+  const [data, setData] = useState(0);
+  function updateAnimal() {
+    setData(data + 1);
+  }
+
   return (
     <>
-      <h1>I Am A Cat</h1>
+      <h1>{data}</h1>
+      <button onClick={updateAnimal}>Update Number Function</button>
     </>
   );
 };

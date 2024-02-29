@@ -1,10 +1,18 @@
-import React from 'react'
+import {useState} from 'react'
 
 function CountryFun() {
+  const [data,setData] = useState("INDIA Function") 
+
+  function updateData () {
+    setData("USA Function")
+  }
+  
   return (
-    <div>
-      <h1>This Is Country Function Based components</h1>
-    </div>
+    <>
+      
+      <h1>{data}</h1>
+      <button onClick={updateData}>Update country Function</button>
+    </>
   )
 }
 
