@@ -1,7 +1,9 @@
 import {useState} from 'react'
+import City from './City';
+import CityFun from './CityFun';
 
 function CountryFun() {
-  const [data,setData] = useState("INDIA Function") 
+  const [countryName,setData] = useState("INDIA Function") 
 
   function updateData () {
     setData("USA Function")
@@ -9,9 +11,10 @@ function CountryFun() {
   
   return (
     <>
-      
-      <h1>{data}</h1>
+      <h1>{countryName}</h1>
       <button onClick={updateData}>Update country Function</button>
+
+      <CityFun cn={countryName} />
     </>
   )
 }
