@@ -25,8 +25,8 @@ function App() {
       {/* <Profile name= {'MEET'} age={21} email={'meet@gmail.com'}/> */}
       {/* <Counter/> */}
       {/* <Counter/> */}
-      {/* <Medicine /> */}
-      <Doctor />
+      <Medicine />
+      {/* <Doctor /> */}
 
     </>
   );

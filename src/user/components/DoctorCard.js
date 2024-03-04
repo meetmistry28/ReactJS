@@ -5,9 +5,9 @@ function DoctorCard ( Ddata )  {
 
     return (
         <>
-            <h1>{Ddata.name}</h1>
-            <h2>{Ddata.fee}</h2>
-            <h2>{Ddata.degree}</h2>
+            <h1>Doctor Name:{Ddata.name}</h1>
+            <h2>Treatement Fee:{Ddata.fee}</h2>
+            <h2>Doctor Colification:{Ddata.degree}</h2>
         </>
     )
     
