@@ -1,13 +1,13 @@
 import React from "react";
 
-function DoctorCard ( Ddata )  {
-    console.log(Ddata);
+function DoctorCard ( {d} )  {
+    console.log(d);
 
     return (
         <>
-            <h1>Doctor Name:{Ddata.name}</h1>
-            <h2>Treatement Fee:{Ddata.fee}</h2>
-            <h2>Doctor Colification:{Ddata.degree}</h2>
+            <h1>Doctor Name:{d.name}</h1>
+            <h2>Treatement Fee:{d.fee}</h2>
+            <h2>Doctor Colification:{d.degree}</h2>
         </>
     )
     
