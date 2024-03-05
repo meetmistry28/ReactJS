@@ -36,7 +36,7 @@ function Doctor (props) {
         <div>
             {
                 doctorData.map((v) => (
-                    <DoctorCard Ddata={v}/>
+                    <DoctorCard d={v}/>
                 ))
             }
         </div>

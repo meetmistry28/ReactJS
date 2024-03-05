@@ -10,6 +10,7 @@ import Profile from "./user/components/profile";
 import Counter from "./user/components/Counter";
 import Medicine from "./user/containers/Medicine";
 import Doctor from "./user/containers/Doctor";
+import Timer from "./user/containers/Timer/Timer";
 
 
 function App() {
@@ -25,8 +26,9 @@ function App() {
       {/* <Profile name= {'MEET'} age={21} email={'meet@gmail.com'}/> */}
       {/* <Counter/> */}
       {/* <Counter/> */}
-      <Medicine />
+      {/* <Medicine /> */}
       {/* <Doctor /> */}
+      <Timer />
 
     </>
   );

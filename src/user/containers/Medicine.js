@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../card/Card"
-import style from "../card/Card"
-
+import Card from "../components/card/Card"
+import styles from "../components/card/Card.module.css"
+import "../components/card/Card.module.css"
 
 const medicineData = [
     {
@@ -65,7 +65,8 @@ const medicineData = [
 function Medicine(props) {
 
     return (
-        <div>
+        <div className="card">
+
             {
                 medicineData.map((v) => (
                     <Card data={v}/>
