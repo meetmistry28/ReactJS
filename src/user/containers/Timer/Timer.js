@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Style from "./Timer.module.css"
 
 export default class Timer extends Component {
   //1 It is used to initialize state value or binding methods.
@@ -41,7 +42,7 @@ export default class Timer extends Component {
   render() {
     return (
       <div>
-        <h1>Timer</h1>
+        <h1 class={Style.time}>Timer</h1>
 
         <h3>{this.state.time.toLocaleTimeString()}</h3>
       </div>

@@ -11,6 +11,7 @@ import Counter from "./user/components/Counter";
 import Medicine from "./user/containers/Medicine";
 import Doctor from "./user/containers/Doctor";
 import Timer from "./user/containers/Timer/Timer";
+import TimerFun from "./user/containers/Timer/TimerFun";
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       {/* <Counter/> */}
       {/* <Medicine /> */}
       {/* <Doctor /> */}
-      <Timer />
+      {/* <Timer /> */}
+      <TimerFun />
 
     </>
   );

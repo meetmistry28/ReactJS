@@ -1,0 +1,15 @@
+.time {
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    height: 200px;
+    border-radius: 50px;
+    width: 200px;
+    background-color: rgba(19, 131, 131, 0.511);
+    /* border: red solid 2px; */
+    box-shadow: 10px 10px 10px 0.4px rgba(223, 223, 223, 0.548);
+}
+
+body {
+    background-color: rgba(0, 85, 64, 0.555);
+}
