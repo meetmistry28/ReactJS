@@ -12,6 +12,8 @@ import Medicine from "./user/containers/Medicine";
 import Doctor from "./user/containers/Doctor";
 import Timer from "./user/containers/Timer/Timer";
 import TimerFun from "./user/containers/Timer/TimerFun";
+import Products from "./user/containers/Prosucts_list/Products";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -30,7 +32,8 @@ function App() {
       {/* <Medicine /> */}
       {/* <Doctor /> */}
       {/* <Timer /> */}
-      <TimerFun />
+      {/* <TimerFun /> */}
+      <Products />
 
     </>
   );

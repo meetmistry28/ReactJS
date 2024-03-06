@@ -19,6 +19,11 @@ function TimerFun(props) {
 
   return (
     <>
+      <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
       <div class={Style.time}>
         <h1>Timer</h1>
 
