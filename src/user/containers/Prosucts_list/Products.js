@@ -12,7 +12,7 @@ import {
 
 function Products() {
   const [productData, setPorductData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearch] = useState("");
 
   useEffect(() => {
     getData();
@@ -27,7 +27,7 @@ function Products() {
   };
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    setSearch(event.target.value);
   };
 
   const searchProducts = productData.filter((product) =>
