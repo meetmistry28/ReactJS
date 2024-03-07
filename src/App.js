@@ -1,4 +1,3 @@
-import "./App.css";
 import Person from "./user/components/person";
 import Man from "./user/components/man";
 import Animal from "./user/components/animal";
