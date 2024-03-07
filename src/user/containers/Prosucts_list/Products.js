@@ -30,8 +30,8 @@ function Products() {
     setSearchTerm(event.target.value);
   };
 
-  const searchProducts = productData.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const searchProducts = productData.filter((v) =>
+    v.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
