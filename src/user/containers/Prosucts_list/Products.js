@@ -14,7 +14,8 @@ function Products() {
   const [productData, setPorductData] = useState([]);
   const [search, setSearch] = useState("");
   const [sort, setShort] = useState("");
-  const [cetegory,setCetegory] = useState([])
+  const [category, setCategory] = useState([]);
+  const [selectCetagory, setSelectCetagory] = useState("");
 
   useEffect(() => {
     getData();
@@ -24,13 +25,18 @@ function Products() {
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
 
-    console.log(data);
+    let unicatData = [];
+
+    data.map((v) => {
+      if (!unicatData.includes(v.category)) {
+        unicatData.push(v.category);
+      }
+    });
+
+    setCategory(unicatData);
+
     setPorductData(data);
   };
-
-  // const handleSearch = (event) => {
-  //   setSearch(event.target.value);
-  // };
 
   const handleSearch = () => {
     let fData = productData.filter(
@@ -39,15 +45,6 @@ function Products() {
         v.description.toLowerCase().includes(search) ||
         v.price.toString().includes(search)
     );
-
-// if (cetegory) {
-  
-//   fData.filter((v) => (
-//     v.cetegory === cetegory
-//   ))
-// }
-
-    // <h3>{}</h3>
 
     fData = fData.sort((a, b) => {
       if (sort === "lh") {
@@ -59,50 +56,56 @@ function Products() {
       } else if (sort === "za") {
         return b.title.localeCompare(a.title);
       }
-    }); 
+    });
+
+    if (selectCetagory) {
+      fData = fData.filter((v) => v.category === selectCetagory);
+    }
 
     return fData;
   };
 
   const finalData = handleSearch();
-  console.log(finalData);
 
   return (
     <div className="container">
       <div className={Style.product}>
         <div className="row">
           <h2 className="text-center"> Product </h2>
-          <div className="mb-3">
-            <input
-              type="text"
-              placeholder="Search"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-            />
+          <div className="box">
+            <div className="mb-3">
+              <input
+                type="text"
+                placeholder="Search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
 
-            <select onChange={(event) => setShort(event.target.value)}>
-              <option value="0">--Select Cetegory--</option>
-              <option value="lh">Price: Low To High</option>
-              <option value="hl">Price: High To Low</option>
-              <option value="az">Product: A -Z</option>
-              <option value="za">Product: Z -A</option>
-            </select>
+              <select onChange={(event) => setShort(event.target.value)}>
+                <option value="0">--Select Filter--</option>
+                <option value="lh">Price: Low To High</option>
+                <option value="hl">Price: High To Low</option>
+                <option value="az">Product: A -Z</option>
+                <option value="za">Product: Z -A</option>
+              </select>
 
-            <br></br>
+              <br></br>
 
-            <br></br>
-                        
-            {/* <button value={cetegory} onChange={(event) => setCetegory(event.target.value)}>cetegory</button> */}
+              <br></br>
 
+              <div className="">
+                <button style={{background: selectCetagory === '' ? 'green' : 'none' }} onClick={() => setSelectCetagory('')}>All</button>
+
+                {category.map((v) => (
+                  <button style={{backgroundColor : v === selectCetagory ? 'blue' : 'white' }} onClick={() => setSelectCetagory(v)}>{v}</button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {finalData.map((v) => (
             <div class="col-md-4 gy-4">
-              {/* <img src={v.image} height={"150px"} width={"150px"} /> */}
-              {/* <h2>{v.price}</h2> */}
-              {/* <h3>{v.title}</h3> */}
-
-              <div class="box">
+              <div class="box-1">
                 <Card
                   style={{
                     width: "18rem",

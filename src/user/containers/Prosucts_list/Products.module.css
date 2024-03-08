@@ -10,6 +10,11 @@
     
 }
 
-.box {
+.box-1 {
     background-color: aqua;
 }
+
+.category {
+    padding: 10px;
+}
+
