@@ -8,6 +8,7 @@ import {
   CardSubtitle,
   CardText,
   CardTitle,
+  Spinner,
 } from "reactstrap";
 
 function Products() {
@@ -16,26 +17,11 @@ function Products() {
   const [sort, setShort] = useState("");
   const [category, setCategory] = useState([]);
   const [selectCetagory, setSelectCetagory] = useState("");
-  // const [loading, setLoading] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
-
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 2000);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
   }, []);
-
-  // fetchDataFromAPI()
-  //   .then((response) => {
-  //     setData(response);
-  //     setLoading(false);
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching data:", error);
-  //     setLoading(false);
-  //   });
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -50,7 +36,7 @@ function Products() {
     });
 
     setCategory(unicatData);
-
+    setLoading(false);
     setPorductData(data);
   };
 
@@ -78,134 +64,100 @@ function Products() {
       fData = fData.filter((v) => v.category === selectCetagory);
     }
 
-    // const fetchDataFromAPI = () => {
-    //   return new Promise((resolve, reject) => {
-    //     setTimeout(() => {
-
-    //       resolve("Mock data");
-    //     }, 2000);
-    //   });
-    // };
-
     return fData;
   };
 
   const finalData = handleSearch();
 
   return (
-    <div className="container">
-      <div className={Style.product}>
-        <div className="row">
-          <h2 className="text-center"> Product </h2>
-          <div className="box">
-            {/* <div>
-              {loading ? (
-                
-                <div>Loading...</div>
-              ) : (
-                
-                <div>{loading}</div>
-              )}
-            </div> */}
+    <>
+      {loading ? (
+        <Spinner class="spinner">Loading...</Spinner>
+      ) : (
+        <div className="container">
+          <div className={Style.product}>
+            <div className="row">
+              <h2 className="text-center"> Product </h2>
+              <div className={Style.box_1}>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                  />
 
-            <div
-              style={{
-                textAlign: "center",
-                margin: "auto",
-              }}
-            >
-              <h1 style={{ color: "green" }}>GeeksforGeeks</h1>
-              {isLoading ? (
-                <div
-                  style={{
-                    width: "100px",
-                    margin: "auto",
-                  }}
-                >
-                  {/* <Loader /> */}
+                  <select onChange={(event) => setShort(event.target.value)}>
+                    <option value="0">--Select Filter--</option>
+                    <option value="lh">Price: Low To High</option>
+                    <option value="hl">Price: High To Low</option>
+                    <option value="az">Product: A -Z</option>
+                    <option value="za">Product: Z -A</option>
+                  </select>
+
+                  <br></br>
+
+                  <br></br>
+
+                  <div className="">
+                    <button
+                      style={{
+                        background: selectCetagory === "" ? "green" : "none",
+                      }}
+                      onClick={() => setSelectCetagory("")}
+                    >
+                      All
+                    </button>
+
+                    {category.map((v) => (
+                      <button
+                        style={{
+                          backgroundColor:
+                            v === selectCetagory ? "blue" : "white",
+                        }}
+                        onClick={() => setSelectCetagory(v)}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              ) : (
-                <div>
-                  <h3>
-                    React Example to Implemet Loader using react-loader-spinner
-                  </h3>
-                </div>
-              )}
-            </div>
-            <div className="mb-3">
-              <input
-                type="text"
-                placeholder="Search"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-              />
-
-              <select onChange={(event) => setShort(event.target.value)}>
-                <option value="0">--Select Filter--</option>
-                <option value="lh">Price: Low To High</option>
-                <option value="hl">Price: High To Low</option>
-                <option value="az">Product: A -Z</option>
-                <option value="za">Product: Z -A</option>
-              </select>
-
-              <br></br>
-
-              <br></br>
-
-              <div className="">
-                <button
-                  style={{
-                    background: selectCetagory === "" ? "green" : "none",
-                  }}
-                  onClick={() => setSelectCetagory("")}
-                >
-                  All
-                </button>
-
-                {category.map((v) => (
-                  <button
-                    style={{
-                      backgroundColor: v === selectCetagory ? "blue" : "white",
-                    }}
-                    onClick={() => setSelectCetagory(v)}
-                  >
-                    {v}
-                  </button>
-                ))}
               </div>
+
+              {finalData.map((v) => (
+                <div class="col-md-4 gy-4">
+                  <div class="box-1">
+                    <Card
+                      style={{
+                        width: "18rem",
+                      }}
+                    >
+                      <img
+                        alt="Sample"
+                        src={v.image}
+                        height={"250px"}
+                        width={"250px"}
+                      />
+                      <CardBody>
+                        <CardTitle tag="h5">
+                          {v.title.substring(0, 20)}
+                        </CardTitle>
+                        <CardSubtitle class="mb-2 text-muted" tag="h6">
+                          {v.description.substring(0, 50)}
+                          ...
+                        </CardSubtitle>
+                        <CardText>{v.price}</CardText>
+                        <Button>Add To Cart</Button>
+                      </CardBody>
+                    </Card>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          {finalData.map((v) => (
-            <div class="col-md-4 gy-4">
-              <div class="box-1">
-                <Card
-                  style={{
-                    width: "18rem",
-                  }}
-                >
-                  <img
-                    alt="Sample"
-                    src={v.image}
-                    height={"250px"}
-                    width={"250px"}
-                  />
-                  <CardBody>
-                    <CardTitle tag="h5">{v.title.substring(0, 20)}</CardTitle>
-                    <CardSubtitle class="mb-2 text-muted" tag="h6">
-                      {v.description.substring(0, 50)}
-                      ...
-                    </CardSubtitle>
-                    <CardText>{v.price}</CardText>
-                    <Button>Add To Cart</Button>
-                  </CardBody>
-                </Card>
-              </div>
-            </div>
-          ))}
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
