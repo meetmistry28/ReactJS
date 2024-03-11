@@ -16,10 +16,26 @@ function Products() {
   const [sort, setShort] = useState("");
   const [category, setCategory] = useState([]);
   const [selectCetagory, setSelectCetagory] = useState("");
+  // const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 2000);
 
   useEffect(() => {
     getData();
   }, []);
+
+  // fetchDataFromAPI()
+  //   .then((response) => {
+  //     setData(response);
+  //     setLoading(false);
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching data:", error);
+  //     setLoading(false);
+  //   });
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -62,6 +78,15 @@ function Products() {
       fData = fData.filter((v) => v.category === selectCetagory);
     }
 
+    // const fetchDataFromAPI = () => {
+    //   return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+
+    //       resolve("Mock data");
+    //     }, 2000);
+    //   });
+    // };
+
     return fData;
   };
 
@@ -73,6 +98,40 @@ function Products() {
         <div className="row">
           <h2 className="text-center"> Product </h2>
           <div className="box">
+            {/* <div>
+              {loading ? (
+                
+                <div>Loading...</div>
+              ) : (
+                
+                <div>{loading}</div>
+              )}
+            </div> */}
+
+            <div
+              style={{
+                textAlign: "center",
+                margin: "auto",
+              }}
+            >
+              <h1 style={{ color: "green" }}>GeeksforGeeks</h1>
+              {isLoading ? (
+                <div
+                  style={{
+                    width: "100px",
+                    margin: "auto",
+                  }}
+                >
+                  {/* <Loader /> */}
+                </div>
+              ) : (
+                <div>
+                  <h3>
+                    React Example to Implemet Loader using react-loader-spinner
+                  </h3>
+                </div>
+              )}
+            </div>
             <div className="mb-3">
               <input
                 type="text"
@@ -94,10 +153,24 @@ function Products() {
               <br></br>
 
               <div className="">
-                <button style={{background: selectCetagory === '' ? 'green' : 'none' }} onClick={() => setSelectCetagory('')}>All</button>
+                <button
+                  style={{
+                    background: selectCetagory === "" ? "green" : "none",
+                  }}
+                  onClick={() => setSelectCetagory("")}
+                >
+                  All
+                </button>
 
                 {category.map((v) => (
-                  <button style={{backgroundColor : v === selectCetagory ? 'blue' : 'white' }} onClick={() => setSelectCetagory(v)}>{v}</button>
+                  <button
+                    style={{
+                      backgroundColor: v === selectCetagory ? "blue" : "white",
+                    }}
+                    onClick={() => setSelectCetagory(v)}
+                  >
+                    {v}
+                  </button>
                 ))}
               </div>
             </div>

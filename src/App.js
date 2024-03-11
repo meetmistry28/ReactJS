@@ -12,10 +12,15 @@
 // import Timer from "./user/containers/Timer/Timer";
 // import TimerFun from "./user/containers/Timer/TimerFun";
 import Products from "./user/containers/Prosucts_list/Products";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
+// function App() {
+//   const [isLoading, setIsLoading] = useState(true);
 
-function App() {
+//   setTimeout(() => {
+//     setIsLoading(false);
+//   }, 2000);
+
   return (
     <>
       {/* <Person/> */}
@@ -33,7 +38,33 @@ function App() {
       {/* <Timer /> */}
       {/* <TimerFun /> */}
       <Products />
-
+{/* 
+      <div
+            style={{
+                textAlign: "center",
+                margin: "auto",
+            }}
+        >
+            <h1 style={{ color: "green" }}>
+                GeeksforGeeks
+            </h1>
+            {isLoading ? (
+                <div
+                    style={{
+                        width: "100px",
+                        margin: "auto",
+                    }}
+                >
+                    <Loader />
+                </div>
+            ) : (
+                <div>
+                    <h3>
+                        React Example to Implemet Loader
+                        using react-loader-spinner
+                    </h3>
+                </div>
+            )} */}
     </>
   );
 }
