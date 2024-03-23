@@ -4,16 +4,18 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./user/containers/home/Home";
 import Products from "./user/containers/Prosucts_list/Products";
 import Contact from "./user/containers/contact/Contact";
+import Employee from "./user/containers/employee/Employee";
 
 function App() {
   return (
     <>
       <Header />
-
+      <Employee />
       <Routes >
-        <Route exact path="/" element={<Home /> }></Route>
+        {/* <Route exact path="/" element={<Home /> }></Route>
         <Route exact path="/products" element={<Products />}></Route>
-        <Route exact path="/contact" element={<Contact />}></Route>
+        <Route exact path="/contact" element={<Contact />}></Route> */}
+        
       </Routes>
     </>
   );
